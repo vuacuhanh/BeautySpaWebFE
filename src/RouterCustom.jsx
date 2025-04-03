@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ROUTERS } from './routers/router';
-import './App.css';
 import HomePageManagement from './pages/pageManager/quan_ly_trang_chu';
 import HomePageLayout from './layouts/HomePageLayout';
 import FacilityManagement from './pages/pageManager/quan_ly_co_so/index.jsx';

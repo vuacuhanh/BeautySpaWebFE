@@ -1,0 +1,117 @@
+/* FacilityCard.css */
+.facility-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  
+  .facility-card .card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .facility-card .rating-badge {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .facility-card .card-body {
+    padding: 40px 15px 15px 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .facility-card .facility-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--text-color);
+  }
+  
+  .facility-card .facility-title a {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  .facility-card .facility-title a:hover {
+    color: var(--primary-color);
+  }
+  
+  .facility-card .facility-address {
+    font-size: 12px;
+    color: var(--text-secondary-color);
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .facility-card .facility-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+  
+  .facility-card .interaction-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .facility-card .icon-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-secondary-color);
+  }
+  
+  .facility-card .icon-wrapper .icon {
+    margin-right: 4px;
+    font-size: 14px;
+  }
+  
+  .facility-card .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-size: 12px;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .facility-card .btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }

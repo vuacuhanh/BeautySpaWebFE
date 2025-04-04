@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import logo from '../../assets/logo/logo.png'; // Đảm bảo đường dẫn đúng
+import { Link } from 'react-router-dom'; // Thêm import Link từ react-router-dom
+import logo from '../../assets/logo/logo.png';
 import './style.css';
 
-const Navbar = () => {
+const Navbar = ({ alwaysShowSearch = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,21 +24,27 @@ const Navbar = () => {
   return (
     <header 
       id="header-top" 
-      className={`header-top ${isScrolled ? 'scrolled' : ''}`}
+      className={`header-top ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
     >
       <div className="navbar-container">
         <div className="logo-brand-container">
-          <div className="logo-container">
-            <img src={logo} alt="Logo" className="logo-img" />
-          </div>
-          <h1 className="brand-name">
-            <span className="zen">ZEN</span>
-            <span className="ora">ORA</span>
-          </h1>
+          {/* Thêm Link cho logo */}
+          <Link to="/" className="logo-link">
+            <div className="logo-container">
+              <img src={logo} alt="Logo" className="logo-img" />
+            </div>
+          </Link>
+          {/* Thêm Link cho chữ ZENORA */}
+          <Link to="/" className="brand-link">
+            <h1 className="brand-name">
+              <span className="zen">ZEN</span>
+              <span className="ora">ORA</span>
+            </h1>
+          </Link>
         </div>
 
         {/* Thanh tìm kiếm trong Navbar */}
-        <div className={`navbar-search ${isScrolled ? 'visible' : 'hidden'}`}>
+        <div className={`navbar-search ${alwaysShowSearch || isScrolled ? 'visible' : 'hidden'}`}>
           <Input
             placeholder="Tìm kiếm cơ sở làm đẹp, dịch vụ..."
             prefix={<SearchOutlined />}
@@ -55,10 +62,10 @@ const Navbar = () => {
         </div>
 
         <div className="auth-links">
-          <a href="/dang-nhap" className={`auth-link ${isScrolled ? 'scrolled' : ''}`}>
+          <a href="/dang-nhap" className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}>
             Sign In
           </a>
-          <a href="/dang-ky" className={`auth-link ${isScrolled ? 'scrolled' : ''}`}>
+          <a href="/dang-ky" className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}>
             Sign Up
           </a>
         </div>

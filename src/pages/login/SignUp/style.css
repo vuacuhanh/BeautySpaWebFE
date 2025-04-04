@@ -1,0 +1,165 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding: 20px;
+  }
+  .signup-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* Phần minh họa bên trái */
+  .signup-illustration{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f4f8;
+    padding: 20px;
+  }
+
+  .illustration-img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .signup-form {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signup-title {
+    text-align: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #343a3f;
+  }
+  
+  .signup-subtitle {
+    text-align: center;
+    text-align: center;
+    font-size: 14px;
+    color: #767f86;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #343a3f;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .form-input {
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+  }
+  
+  .form-input:hover,
+  .form-input:focus {
+    border-color: #00c4b4;
+    box-shadow: none;
+  }
+  
+  .signup-btn {
+    background-color: var(--primary-color);
+    font-size: 16px;
+    padding: 10px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .signup-btn:hover,
+  .signup-btn:focus {
+    background-color: var(--secondary-color);
+  }
+  
+  /* Container cho các nút đăng nhập bằng Google, Facebook, Phone */
+.social-login-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* Nút đăng nhập chung */
+.social-btn {
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng hover cho các nút */
+.social-btn:hover,
+.social-btn:focus {
+  transform: translateY(-3px); /* Nổi lên khi hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ */
+}
+
+/* Tùy chỉnh màu sắc cho từng nút */
+.google-btn {
+  color: #db4437; 
+}
+
+.google-btn:hover,
+.google-btn:focus {
+  color: #db4437;
+  border-color: #db4437;
+}
+
+.facebook-btn {
+  color: #4267b2; 
+}
+
+.facebook-btn:hover,
+.facebook-btn:focus {
+  color: #4267b2;
+  border-color: #4267b2;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 14px;
+  color: #767f86;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

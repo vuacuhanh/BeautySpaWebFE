@@ -1,0 +1,119 @@
+.header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.header-top.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.logo-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-container {
+  height: 40px; /* Điều chỉnh theo kích thước logo */
+}
+
+.logo-img {
+  height: 100%;
+  width: auto;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.header-top.scrolled .brand-name {
+  color: #333;
+}
+
+.zen {
+  color: #008DDA; /* Màu Primary cho ZEN */
+}
+
+.ora {
+  color: inherit; /* Kế thừa màu từ brand-name */
+}
+
+.auth-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.auth-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.auth-link.scrolled {
+  color: #333;
+}
+
+.auth-link:hover {
+  color: var(--primary-color);
+}
+
+/* Thanh tìm kiếm trong Navbar */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-search.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar-search.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none; /* Ngăn tương tác khi ẩn */
+}
+
+.search-input {
+  width: 300px;
+  border-radius: 20px;
+}
+
+.search-btn {
+  background-color: #008DDA;
+  border-color: #008DDA;
+  border-radius: 20px;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #006bb3;
+  border-color: #006bb3;
+}

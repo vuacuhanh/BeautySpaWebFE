@@ -138,7 +138,25 @@ opacity: 0;
   z-index: -1;
 }
 
-.welcome-hero-serch-box{margin-top: 78px;display: flex;}
+.welcome-hero-serch-box{
+  margin-top: 78px;
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.welcome-hero-search-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.welcome-hero-search-box.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none; /* Ngăn tương tác khi ẩn */
+}
+
+
 .welcome-hero-form {
   display: flex;
   background: #fff;
@@ -183,7 +201,7 @@ opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 18px;
   color: var(--white);
   width: 170px;
   height: 70px;
@@ -194,8 +212,8 @@ opacity: 0;
   transition: 0.3s linear;
 }
 .welcome-hero-btn:hover{
-  background: var(--secondary-color); 
-  color: var(--text-color);
+  background: var(--secondary-color) !important; 
+  color: var(--text-color) !important;
 }
 
 .welcome-hero-btn svg {
@@ -204,7 +222,7 @@ opacity: 0;
   margin-left:  12px;
 }
 .search-icon {
-  font-size: 16px;
+  font-size: 20px !important;
 }
 /*-------------------------------------
       5. List-topuics

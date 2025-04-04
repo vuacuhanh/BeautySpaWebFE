@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Input, Button } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import logo from '../../assets/logo/logo.png'; // Đảm bảo đường dẫn đúng
 import './style.css';
 
@@ -33,10 +35,32 @@ const Navbar = () => {
             <span className="ora">ORA</span>
           </h1>
         </div>
-        
+
+        {/* Thanh tìm kiếm trong Navbar */}
+        <div className={`navbar-search ${isScrolled ? 'visible' : 'hidden'}`}>
+          <Input
+            placeholder="Tìm kiếm cơ sở làm đẹp, dịch vụ..."
+            prefix={<SearchOutlined />}
+            className="search-input"
+            size="large"
+          />
+          <Button
+            className="search-btn"
+            icon={<SearchOutlined />}
+            size="large"
+            onClick={() => console.log('Search clicked')}
+          >
+            Search
+          </Button>
+        </div>
+
         <div className="auth-links">
-          <a href="#" className={`auth-link ${isScrolled ? 'scrolled' : ''}`}>Sign in</a>
-          <a href="#" className={`auth-link ${isScrolled ? 'scrolled' : ''}`}>Register</a>
+          <a href="/dang-nhap" className={`auth-link ${isScrolled ? 'scrolled' : ''}`}>
+            Sign In
+          </a>
+          <a href="/dang-ky" className={`auth-link ${isScrolled ? 'scrolled' : ''}`}>
+            Sign Up
+          </a>
         </div>
       </div>
     </header>

@@ -1,0 +1,195 @@
+.information-management {
+    display: flex;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin-top: 130px;
+  }
+  
+  .sidebar {
+    width: 270px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 340px;
+    border-radius: 10px;
+  }
+  
+  .profile-card {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .profile-info h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0 5px;
+  }
+  
+  .profile-info p {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .sidebar-menu {
+    list-style: none;
+  }
+  
+  .sidebar-menu li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .sidebar-menu li:hover {
+    color: #008DDA;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .info-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .info-form h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  .avatar-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .avatar-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .avatar-section span {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .form-group input:disabled {
+    background-color: #f9f9f9;
+    color: #666;
+  }
+  
+  .add-phone-button {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #41C9E2;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .add-phone-button:hover {
+    border-color: #41C9E2;
+  }
+  
+  .save-button {
+    background-color: #41C9E2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .save-button:hover {
+    background-color: #008DDA;
+  }
+  
+  /* Modal styles */
+  .phone-modal .ant-modal {
+    top: 0 !important; /* Đảm bảo modal không bị lệch */
+  }
+  
+  .phone-modal .ant-modal-header {
+    background-color: #41C9E2;
+    color: #fff;
+  }
+  
+  .phone-modal .ant-modal-title {
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .phone-modal .ant-modal-content {
+    border-radius: 8px;
+  }
+  
+  .phone-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .phone-input-group .ant-select-selector {
+    border-radius: 4px 0 0 4px !important;
+  }
+  
+  .phone-input-group .ant-input {
+    border-radius: 0 4px 4px 0 !important;
+  }
+  
+  .send-sms-button {
+    background-color: #41C9E2 !important;
+    border-color: #41C9E2 !important;
+    border-radius: 4px;
+    height: 40px;
+  }
+  
+  .send-sms-button:hover {
+    background-color: #008DDA !important;
+    border-color: #008DDA !important;
+  }

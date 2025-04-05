@@ -217,13 +217,12 @@ opacity: 0;
 }
 
 .welcome-hero-btn svg {
-  width:  14px;
+  width:  16px;
   height:  auto;
   margin-left:  12px;
+  font-weight: 600;
 }
-.search-icon {
-  font-size: 20px !important;
-}
+
 /*-------------------------------------
       5. List-topuics
 --------------------------------------*/
@@ -299,6 +298,12 @@ opacity: 0;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
+}
+
+.list-topics .card-body .fa-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .list-topics .card-body:hover .fa-icon,
@@ -438,7 +443,7 @@ opacity: 0;
 }
 
 .voucher-title a:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 /* Voucher Provider */
@@ -507,11 +512,11 @@ opacity: 0;
 
 .featured-facilities .section-header p {
   font-size: 16px;
-  color: #767f86; /* Gray for secondary text */
+  color: var(--text-secondary-color);
 }
 
 .featured-facilities .view-more-link {
-  color: #00c4b4; /* Teal color for the "Xem thêm" link */
+  color: var(--primary-color);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -552,7 +557,7 @@ opacity: 0;
   bottom: -25px; /* Position it to overlap the image and card body */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for the badge's width to truly center it */
-  background: #00c4b4; /* Teal background */
+  background: var(--primary-color); /* Teal background */
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -593,13 +598,13 @@ opacity: 0;
 }
 
 .facility-title a:hover {
-  color: #00c4b4; /* Teal color on hover */
+  color: var(--accent-color); /* Teal color on hover */
 }
 
 /* Facility Address */
 .facility-address {
   font-size: 12px;
-  color: #767f86; /* Gray color for secondary text */
+  color: var(--text-color); /* Gray color for secondary text */
   margin-bottom: 8px;
   white-space: nowrap; /* Prevent wrapping */
   overflow: hidden; /* Hide overflow */
@@ -652,34 +657,15 @@ opacity: 0;
   }
 }
 /*-------------------------------------
-      8. Collections - Đã sửa
+      8. Collections
 --------------------------------------*/
 .collections {
   padding: 90px 0;
-  background: #f5f7fa;
-}
-/* Fix lỗi hover không đồng đều */
-.collections .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -15px; /* Bù lại padding của các col */
-}
-
-.collections .col {
-  padding: 15px;
-  flex: 0 0 25%;
-  max-width: 25%;
-  position: relative;
-  z-index: 1;
-}
-
-.collection-card {
-  transition: all 0.3s ease;
-  will-change: transform; /* Tối ưu hiệu ứng */
+  background: var(--background-color);
 }
 
 .collections .section-header h2 {
-  color: var(--primary-color); /* Sử dụng biến màu chính */
+  color: var(--primary-color);
   font-size: 32px;
   font-weight: 700;
   text-transform: uppercase;
@@ -703,52 +689,37 @@ opacity: 0;
   text-decoration: underline;
 }
 
-/* Collection Card Link */
-.collection-card-link {
-  display: block;
-  height: 100%; /* Đảm bảo link chiếm toàn bộ chiều cao */
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Collection Card */
 .collection-card {
-  background: #fff;
+  background: var(--white);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-color);
   transition: all 0.3s ease;
   border: none;
   overflow: hidden;
-  height: 100%; /* Đảm bảo card chiếm toàn bộ chiều cao */
+  height: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  transform: translateZ(0); /* Fix for hover flickering */
 }
 
 .collection-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  z-index: 1;
+  box-shadow: 0 6px 16px var(--shadow-color);
 }
 
-/* Image */
 .collection-card .card-img-top {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   height: 250px;
   object-fit: cover;
-  width: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng */
 }
 
-/* Points Badge */
 .points-badge {
   position: absolute;
   bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--primary-color);
-  color: #fff;
+  color: var(--white);
   font-size: 15px;
   font-weight: 600;
   width: 80px;
@@ -757,10 +728,9 @@ opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-/* Card Body */
 .collection-card .card-body {
   padding: 40px 15px 15px 15px;
   flex-grow: 1;
@@ -768,7 +738,6 @@ opacity: 0;
   flex-direction: column;
 }
 
-/* Collection Title */
 .collection-title {
   font-size: 16px;
   font-weight: 600;
@@ -776,15 +745,13 @@ opacity: 0;
   line-height: 1.4;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  /* -webkit-line-clamp: 2; */
   overflow: hidden;
   color: var(--text-color);
-  min-height: 44px; /* Đảm bảo tiêu đề luôn có chiều cao nhất định */
+  min-height: 44px;
 }
 
-/* Collection Actions */
 .collection-actions {
-  margin-top: auto; /* Đẩy phần actions xuống dưới cùng */
+  margin-top: auto;
 }
 
 .interaction-icons {
@@ -804,7 +771,6 @@ opacity: 0;
   font-size: 14px;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .collections .row {
     justify-content: center;
@@ -967,8 +933,6 @@ opacity: 0;
 
 .main-content {
   flex: 1;
-  padding: 1rem;
-  margin-top: 50px; /* Để tránh bị navbar đè lên */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;

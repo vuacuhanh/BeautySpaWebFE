@@ -2,7 +2,7 @@
   --primary-color: #008DDA;       /* Màu chính - Xanh đậm */
   --secondary-color: #41C9E2;     /* Màu phụ - Xanh nhạt */
   --accent-color: #ACE2E1;        /* Màu nhấn - Xanh rất nhạt */
-  --background-color: #F7EEDD;    /* Màu nền - Kem nhạt */
+  --background-color: #ececec;    /* Màu nền - Kem nhạt */
   --text-color: #343a3f;          /* Màu chữ chính (giữ nguyên) */
   --text-secondary-color: #767f86; /* Màu chữ phụ (giữ nguyên) */
   --white: #fff;                  /* Màu trắng */
@@ -117,12 +117,12 @@ opacity: 0;
 --------------------------------------*/
 .welcome-hero {
   position: relative;
-  background:url(https://cdn.chuuniotaku.com/upload/chuuniotaku_com/post/images/2023/11/11/956/hinh-gojo-satoru-7.jpg)no-repeat;
+  background:url(D:\BeautySpaFE\BeautySpaWebFE\src\assets\img\1291838.jpg)no-repeat;
   background-position:center;
   background-size:cover;
   text-align: center;
   display: flex;
-  height:600px;
+  height:700px;
   align-items: center;
   justify-content: center;
   z-index: 1;
@@ -257,7 +257,7 @@ opacity: 0;
 .list-topics .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px var(--shadow-color);
-  background-color: var(--accent-color); 
+  background-color: #008DDA; 
   cursor: pointer;
 }
 
@@ -642,7 +642,7 @@ opacity: 0;
 }
 
 .show-details-link:hover {
-  color: #00c4b4; /* Teal color on hover */
+  color: #008DDA; /* Teal color on hover */
   text-decoration: underline;
 }
 

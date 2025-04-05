@@ -49,7 +49,7 @@
   }
   
   .sidebar-menu li:hover {
-    color: #008DDA;
+    color: var(--primary-color);
   }
   
   .main-content {
@@ -114,7 +114,7 @@
   
   .form-group input:disabled {
     background-color: #f9f9f9;
-    color: #666;
+    color: var(--text-color)
   }
   
   .add-phone-button {
@@ -124,17 +124,17 @@
     border-radius: 4px;
     font-size: 14px;
     background-color: #fff;
-    color: #41C9E2;
+    color: var(--primary-color);
     text-align: left;
     cursor: pointer;
   }
   
   .add-phone-button:hover {
-    border-color: #41C9E2;
+    border-color: var(--secondary-color);
   }
   
   .save-button {
-    background-color: #41C9E2;
+    background-color: var(--primary-color);
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -144,34 +144,49 @@
     width: 100%;
     margin-top: 20px;
   }
+
   
   .save-button:hover {
-    background-color: #008DDA;
+    background-color: var(--secondary-color);
   }
-  
+  .btn-send-sms {
+    background-color: var(--primary-color);
+  }
   /* Modal styles */
   .phone-modal .ant-modal {
-    top: 0 !important; /* Đảm bảo modal không bị lệch */
+    top: 0 !important; 
   }
   
   .phone-modal .ant-modal-header {
-    background-color: #41C9E2;
+    background-color: var(--primary-color);
     color: #fff;
   }
-  
   .phone-modal .ant-modal-title {
     color: #fff;
     font-size: 16px;
+    align-items: center;
+    text-align: center;
+    padding: 7px 0;
   }
-  
+  :where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-close {
+    top: 3px;
+  }
   .phone-modal .ant-modal-content {
     border-radius: 8px;
+    padding: 0;
   }
-  
+  :where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-body {
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    word-wrap: break-word;  
+    padding: 15px;
+    padding-top: 5px;
+  }
   .phone-input-group {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: 15px;
   }
   
   .phone-input-group .ant-select-selector {
@@ -183,13 +198,13 @@
   }
   
   .send-sms-button {
-    background-color: #41C9E2 !important;
-    border-color: #41C9E2 !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
     border-radius: 4px;
     height: 40px;
   }
   
   .send-sms-button:hover {
-    background-color: #008DDA !important;
-    border-color: #008DDA !important;
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
   }

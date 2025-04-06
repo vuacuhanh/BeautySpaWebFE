@@ -56,7 +56,6 @@ const InformationManagement = () => {
               alt="Avatar"
               className="avatar-image"
             />
-            <span>Ảnh đại diện</span>
           </div>
           <form>
             <div className="form-group">
@@ -98,7 +97,7 @@ const InformationManagement = () => {
           className="phone-modal"
           centered // Thuộc tính centered của antd để căn giữa modal
         >
-          <p style={{ fontSize: '14px', color: '#666' }}>
+          <p style={{ fontSize: '14px', color: '#666', textAlign:'center' }}>
             Vui lòng nhập số điện thoại
           </p>
           <div className="phone-input-group">
@@ -126,8 +125,7 @@ const InformationManagement = () => {
           >
             Gửi SMS
           </Button>
-          <p style={{ fontSize: '12px', color: '#666', marginTop: '10px' }}>
-            Email: tricker3812@gmail.com
+          <p style={{ fontSize: '12px', marginTop: '10px' }}>
           </p>
         </Modal>
       </main>

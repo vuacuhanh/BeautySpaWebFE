@@ -5,6 +5,7 @@
     max-width: 1200px;
     margin: 80px auto 0; /* Tránh bị navbar che */
     gap: 20px;
+    padding-top: 60px;
   }
   
   /* Sidebar */

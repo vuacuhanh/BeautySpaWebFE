@@ -8,7 +8,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render (
-  <BrowserRouter>
-    <RouterCustom />
-  </BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <RouterCustom />
+    </BrowserRouter>
+  </React.StrictMode>
 );

@@ -23,7 +23,7 @@ const FacilityCard = ({ facility }) => {
   return (
     <div className="col">
       <div className="card facility-card">
-        <Link to={`/facility/${id}`} className="image-link">
+        <Link to={`/co-so-lam-dep/${id}`} className="image-link">
           <div className="position-relative">
             <img
               src={img}
@@ -37,7 +37,7 @@ const FacilityCard = ({ facility }) => {
         
         <div className="card-body">
           <h3 className="facility-title">
-            <Link to={`/facility/${id}`}>{title}</Link>
+            <Link to={`/co-so-lam-dep/${id}`}>{title}</Link>
           </h3>
           
           <p className="facility-address">{address}</p>

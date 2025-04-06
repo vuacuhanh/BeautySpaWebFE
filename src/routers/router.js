@@ -5,7 +5,7 @@ export const ROUTERS = {
       signup: "/dang-ky",
       homepage: "/trang-chu",
       facility: "/co-so-lam-dep",
-      facilityDetail: "/chi-tiet-co-so",
+      facilityDetail: "/co-so-lam-dep/:id",
       profile: "/thong-tin-ca-nhan",
     },
   };

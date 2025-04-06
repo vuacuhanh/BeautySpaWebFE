@@ -117,7 +117,7 @@ opacity: 0;
 --------------------------------------*/
 .welcome-hero {
   position: relative;
-  background:url(D:\BeautySpaFE\BeautySpaWebFE\src\assets\img\1291838.jpg)no-repeat;
+  background:url(./assets/img/1291838.jpg)no-repeat;
   background-position:center;
   background-size:cover;
   text-align: center;

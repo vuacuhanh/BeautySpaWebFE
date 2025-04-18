@@ -116,7 +116,7 @@ const FacilityDetailManagement = () => {
             <PhoneOutlined /> {facilityData.phone}
           </p>
           
-          <div className="facility-actions">
+          <div className="facilityDetail-actions ">
             <span className="action-icon">
               <HeartOutlined /> {facilityData.likes} Thích
             </span>

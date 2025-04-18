@@ -1,0 +1,98 @@
+.register-container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .register-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .register-form {
+    padding: 0 20px;
+  }
+  
+  .cover-preview {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .description-images-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .description-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .ant-form-item-label > label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .ant-btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .ant-btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .register-container {
+      margin: 20px;
+      padding: 10px;
+    }
+  
+    .register-form {
+      padding: 0 10px;
+    }
+  
+    .register-title {
+      font-size: 1.5rem;
+    }
+  
+    .cover-preview {
+      max-width: 100%;
+    }
+  
+    .description-preview {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .register-title {
+      font-size: 1.2rem;
+    }
+  
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+  
+    .ant-btn-primary {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }

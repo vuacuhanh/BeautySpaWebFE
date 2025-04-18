@@ -8,6 +8,7 @@ import FacilityDetailManagement from './pages/pageManager/quan_ly_co_so_chi_tiet
 import InformationManagement from './pages/pageManager/quan_ly_tt_ca_nhan/index.jsx';
 import SignUp from './pages/login/SignUp/index.jsx';
 import SigIn from './pages/login/SignIn/index.jsx';
+import ServiceProviderRegisterManager from './pages/pageManager/dang_ky_cua_hang/index.jsx';
 
 export const userRouters = [
   {
@@ -41,6 +42,11 @@ export const userRouters = [
     component: <InformationManagement />,
     layout: HomePageLayout,
   },
+  {
+    path: ROUTERS.USER.serviceProvider,
+    component: <ServiceProviderRegisterManager />,
+    layout: HomePageLayout,
+  }
 ];
 
 const RouterCustom = () => (

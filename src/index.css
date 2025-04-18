@@ -93,15 +93,36 @@ opacity: 0;
 /* section-header */
 .section-header{
   position: relative;
-  text-align: center;
+  margin-bottom: 40px;
+}
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+.view-more-link {
+  margin-top: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+.view-more-link:hover {
+  color: var(--secondary-color);
 }
 .section-header h2{
-  color: #505866;
-  font-size:24px;
-  font-weight: 500;
-  margin-bottom: 24px;
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.3px;
+  margin: 0; 
 }
 .section-header h2 span{text-transform: lowercase;}
 .section-header p{
@@ -357,18 +378,6 @@ opacity: 0;
   -o-transition:.3s linear;
   transition: .3s linear;
 }
-.single-list-topics-content h2>a { margin: 13px 0;}
-/*.single-list-topics-content:last-child{margin-right: 0;}*/
-
-.single-list-topics-icon [class^="flaticon-"]:before,.single-list-topics-icon [class*=" flaticon-"]:before,.single-list-topics-icon [class^="flaticon-"]:after,.single-list-topics-icon [class*=" flaticon-"]:after {font-size: 45px;color:#343a3f;}
-.single-list-topics-content:hover .single-list-topics-icon [class^="flaticon-"]:before,.single-list-topics-content:hover .single-list-topics-icon [class*=" flaticon-"]:before,.single-list-topics-content:hover .single-list-topics-icon [class^="flaticon-"]:after,.single-list-topics-content:hover .single-list-topics-icon [class*=" flaticon-"]:after {color:#fff;}
-
-.single-list-topics-content:hover h2>a,.single-list-topics-content:hover p{color: #fff!important;}
-.single-list-topics-content:hover{
-  color: #fff;
-  background:#ff545a;
-  box-shadow: 0 5px 10px rgba(71,71,71,.4);
-}
 
 /*-------------------------------------
       6. Works 
@@ -378,30 +387,16 @@ opacity: 0;
   background: var(--background-color);
   margin-bottom: 10px;
 }
-
-.voucher .section-header h2 {
-  color: var(--primary-color);
-  font-size: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--primary-color);
+.container-layout {
+  width: 1150px;
 }
+
 
 .voucher .section-header p {
   font-size: 16px;
   color: var(--text-secondary-color);
 }
 
-.voucher .view-more-link {
-  color: var(--primary-color);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.voucher .view-more-link:hover {
-  text-decoration: underline;
-}
 
 /* Voucher Card */
 .voucher-card {
@@ -501,30 +496,13 @@ opacity: 0;
   background: #f5f7fa; /* Light background like the image */
 }
 
-.featured-facilities .section-header h2 {
-  color: var(--primary-color); /* Teal color for the title */
-  font-size: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--primary-color); /* Teal border */
-  padding-bottom: 15px;
-}
+
 
 .featured-facilities .section-header p {
   font-size: 16px;
   color: var(--text-secondary-color);
 }
 
-.featured-facilities .view-more-link {
-  color: var(--primary-color);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.featured-facilities .view-more-link:hover {
-  text-decoration: underline;
-}
 
 /* Facility Card */
 .facility-card {
@@ -567,7 +545,8 @@ opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  border: 3px solid var(--secondary-color);
 }
 
 /* Card Body */
@@ -664,30 +643,12 @@ opacity: 0;
   background: var(--background-color);
 }
 
-.collections .section-header h2 {
-  color: var(--primary-color);
-  font-size: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 15px;
-}
 
 .collections .section-header p {
   font-size: 16px;
   color: var(--text-secondary-color);
 }
 
-.collections .view-more-link {
-  color: var(--primary-color);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.collections .view-more-link:hover {
-  text-decoration: underline;
-}
 
 .collection-card {
   background: var(--white);
@@ -713,23 +674,6 @@ opacity: 0;
   object-fit: cover;
 }
 
-.points-badge {
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary-color);
-  color: var(--white);
-  font-size: 15px;
-  font-weight: 600;
-  width: 80px;
-  height: 50px;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 4px var(--shadow-color);
-}
 
 .collection-card .card-body {
   padding: 40px 15px 15px 15px;
@@ -746,10 +690,15 @@ opacity: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  color: var(--text-color);
   min-height: 44px;
 }
-
+.collection-title a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+.collection-title:hover a {
+  color: var(--secondary-color);
+}
 .collection-actions {
   margin-top: auto;
 }
@@ -790,30 +739,12 @@ opacity: 0;
   background: #f5f7fa; /* Màu nền nhạt giống các section khác */
 }
 
-.booked-schedule .section-header h2 {
-  color: var(--primary-color); /* Màu teal */
-  font-size: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--primary-color); /* Đường viền dưới màu teal */
-  padding-bottom: 15px;
-}
 
 .booked-schedule .section-header p {
   font-size: 16px;
   color: var(--text-secondary-color); /* Màu chữ phụ */
 }
 
-.booked-schedule .view-more-link {
-  color: var(--primary-color); /* Màu teal */
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.booked-schedule .view-more-link:hover {
-  text-decoration: underline;
-}
 
 /* Booked Schedule Card */
 .booked-schedule-card {
@@ -839,24 +770,6 @@ opacity: 0;
   object-fit: cover;
 }
 
-/* Rating Badge */
-.booked-schedule-card .rating-badge {
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary-color); /* Màu teal */
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 /* Card Body */
 .booked-schedule-card .card-body {
@@ -982,4 +895,41 @@ border:1px solid #ff545a;
 @keyframes example {
   0%   {bottom:0px;}
   100%  {bottom:7px;}
+}
+/* Animation cho tiêu đề xuất hiện từ bên trái */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation cho các thẻ facility xuất hiện từ bên phải */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Lớp để áp dụng animation cho tiêu đề */
+.animate-title {
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slideInFromLeft 0.5s ease-out forwards;
+}
+
+/* Lớp để áp dụng animation cho thẻ facility */
+.animate-facility {
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideInFromRight 0.5s ease-out forwards;
 }

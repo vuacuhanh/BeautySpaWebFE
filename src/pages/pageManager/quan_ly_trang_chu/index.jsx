@@ -4,7 +4,7 @@ import Navbar from '../../../components/navbar/index.jsx';
 import Footer from '../../../components/footer/index.jsx';
 import FacilityCard from '../../../components/FacilityCard/index.jsx';
 import { Button } from 'antd';
-import { SearchOutlined, HeartOutlined, ShareAltOutlined } from '@ant-design/icons';
+import { SearchOutlined, HeartOutlined, ShareAltOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCut, faSpa, faShower, faTooth, faPaintBrush } from '@fortawesome/free-solid-svg-icons';
 
@@ -82,7 +82,7 @@ const HomePageManagement = () => {
       </section>
 
       <section id="list-topics" className="list-topics py-5">
-        <div className="container-fluid">
+        <div className="container-fluid container-layout">
           <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
             {topics.map((item, index) => (
               <div key={index} className="col">
@@ -90,7 +90,7 @@ const HomePageManagement = () => {
                   <div className="card-body">
                     <FontAwesomeIcon icon={item.icon} className="fa-icon mb-3" style={{ fontSize: '45px' }} />
                     <h2>
-                      <Link to="/co-so-lam-dep">{item.title}</Link> {/* Sửa link */}
+                      <Link to="/co-so-lam-dep">{item.title}</Link>
                     </h2>
                     <p>{item.listings} listings</p>
                   </div>
@@ -102,12 +102,13 @@ const HomePageManagement = () => {
       </section>
 
       <section id="voucher" className="voucher py-5 bg-light">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2>Ưu Đãi</h2>
-            <p>Khám phá các ưu đãi hấp dẫn từ các cơ sở làm đẹp</p>
-            <div className="text-end">
-              <Link to="/co-so-lam-dep" className="view-more-link">Xem thêm</Link>
+        <div className="container-lg container-layout">
+          <div className="section-header mb-5">
+            <div className="header-row">
+              <h2>Ưu Đãi</h2>
+              <Link to="/co-so-lam-dep" className="view-more-link">
+                Xem thêm <DoubleRightOutlined />
+              </Link>
             </div>
           </div>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -120,7 +121,7 @@ const HomePageManagement = () => {
                   </div>
                   <div className="card-body">
                     <h3 className="voucher-title">
-                      <Link to={`/co-so-lam-dep/${item.id}`}>{item.title}</Link> {/* Sửa link */}
+                      <Link to={`/co-so-lam-dep/${item.id}`}>{item.title}</Link>
                     </h3>
                     <p className="voucher-provider">
                       <span className="provider-icon">👤</span> {item.provider}
@@ -139,12 +140,13 @@ const HomePageManagement = () => {
       </section>
 
       <section id="featured-facilities" className="featured-facilities py-5">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2>Địa Điểm Nổi Bật</h2>
-            <p>Khám phá các cơ sở làm đẹp nổi bật tại khu vực của bạn</p>
-            <div className="text-end">
-              <Link to="/co-so-lam-dep" className="view-more-link">Xem thêm</Link>
+        <div className="container container-layout">
+          <div className="section-header mb-5">
+            <div className="header-row">
+              <h2>Địa Điểm Nổi Bật</h2>
+              <Link to="/co-so-lam-dep" className="view-more-link">
+                Xem thêm <DoubleRightOutlined />
+              </Link>
             </div>
           </div>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -156,12 +158,13 @@ const HomePageManagement = () => {
       </section>
 
       <section id="collections" className="collections py-5 bg-light">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2>Bộ Sưu Tập</h2>
-            <p>Khám phá các bộ sưu tập nổi bật tại khu vực của bạn</p>
-            <div className="text-end">
-              <Link to="/co-so-lam-dep" className="view-more-link">Xem thêm</Link>
+        <div className="container container-layout">
+          <div className="section-header mb-5">
+            <div className="header-row">
+              <h2>Bộ Sưu Tập</h2>
+              <Link to="/co-so-lam-dep" className="view-more-link">
+                Xem thêm <DoubleRightOutlined />
+              </Link>
             </div>
           </div>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -170,11 +173,11 @@ const HomePageManagement = () => {
                 <div className="card h-100 collection-card">
                   <div className="position-relative">
                     <img src={item.img} className="card-img-top" alt="collection" />
-                    <span className="points-badge">{item.points} điểm</span>
+                    <span className="rating-badge">{item.points}</span>
                   </div>
                   <div className="card-body">
                     <h3 className="collection-title">
-                      <Link to={`/co-so-lam-dep/${item.id}`}>{item.title}</Link> {/* Sửa link */}
+                      <Link to={`/co-so-lam-dep/${item.id}`}>{item.title}</Link>
                     </h3>
                     <div className="collection-actions d-flex justify-content-between align-items-center">
                       <div className="interaction-icons">
@@ -195,12 +198,13 @@ const HomePageManagement = () => {
       </section>
 
       <section id="booked-schedule" className="booked-schedule py-5">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2>Lịch Đã Đặt</h2>
-            <p>Khám phá các lịch đã đặt của bạn</p>
-            <div className="text-end">
-              <Link to="/co-so-lam-dep" className="view-more-link">Xem thêm</Link>
+        <div className="container container-layout">
+          <div className="section-header mb-5">
+            <div className="header-row">
+              <h2>Lịch Đã Đặt</h2>
+              <Link to="/co-so-lam-dep" className="view-more-link">
+                Xem thêm <DoubleRightOutlined />
+              </Link>
             </div>
           </div>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -209,11 +213,11 @@ const HomePageManagement = () => {
                 <div className="card h-100 booked-schedule-card">
                   <div className="position-relative">
                     <img src={item.img} className="card-img-top" alt="booked-schedule" />
-                    <span className="points-badge">{item.points} điểm</span>
+                    <span className="rating-badge">{item.points}</span>
                   </div>
                   <div className="card-body">
                     <h3 className="booked-schedule-title">
-                      <Link to={`/co-so-lam-dep/${item.id}`}>{item.title}</Link> {/* Sửa link */}
+                      <Link to={`/co-so-lam-dep/${item.id}`}>{item.title}</Link>
                     </h3>
                     <div className="booked-schedule-actions d-flex justify-content-between align-items-center">
                       <div className="interaction-icons">

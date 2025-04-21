@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom'; // Thêm import Link từ react-router-dom
+import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/logo.png';
 import './style.css';
 
 const Navbar = ({ alwaysShowSearch = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  // Mô phỏng trạng thái đăng nhập (thay bằng logic thực tế nếu có)
+  const [user, setUser] = useState(null); // Ví dụ: { name: 'John Doe' } khi đăng nhập
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,20 +23,25 @@ const Navbar = ({ alwaysShowSearch = false }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Hàm mô phỏng đăng xuất (thay bằng logic thực tế nếu có)
+  const handleLogout = () => {
+    setUser(null);
+    console.log('User logged out');
+    // Trong thực tế, thêm logic gọi API đăng xuất, xóa token, v.v.
+  };
+
   return (
-    <header 
-      id="header-top" 
+    <header
+      id="header-top"
       className={`header-top ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
     >
       <div className="navbar-container">
         <div className="logo-brand-container">
-          {/* Thêm Link cho logo */}
           <Link to="/" className="logo-link">
             <div className="logo-container">
               <img src={logo} alt="Logo" className="logo-img" />
             </div>
           </Link>
-          {/* Thêm Link cho chữ ZENORA */}
           <Link to="/" className="brand-link">
             <h1 className="brand-name">
               <span className="zen">ZEN</span>
@@ -57,17 +64,43 @@ const Navbar = ({ alwaysShowSearch = false }) => {
             size="large"
             onClick={() => console.log('Search clicked')}
           >
-            Search
+            Tìm Kiếm
           </Button>
         </div>
 
+        {/* Hiển thị tùy theo trạng thái đăng nhập */}
         <div className="auth-links">
-          <a href="/dang-nhap" className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}>
-            Sign In
-          </a>
-          <a href="/dang-ky" className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}>
-            Sign Up
-          </a>
+          {user ? (
+            <div className="user-info">
+              <span
+                className={`user-name ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
+              >
+                Xin chào, {user.name}
+              </span>
+              <a
+                href="#"
+                onClick={handleLogout}
+                className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
+              >
+                Đăng xuất
+              </a>
+            </div>
+          ) : (
+            <>
+              <a
+                href="/dang-nhap"
+                className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
+              >
+                Đăng nhập
+              </a>
+              <a
+                href="/dang-ky"
+                className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
+              >
+                Đăng ký
+              </a>
+            </>
+          )}
         </div>
       </div>
     </header>

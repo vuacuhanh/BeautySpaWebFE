@@ -1,14 +1,15 @@
 .register-container {
     max-width: 800px;
-    margin: 100px auto;
+    margin:  auto;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
   }
   
   .register-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: var(--primary-color);
     text-align: center;

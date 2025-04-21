@@ -1,210 +1,227 @@
 .information-management {
-    display: flex;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    margin-top: 130px;
-  }
-  
-  .sidebar {
-    width: 270px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    height: 340px;
-    border-radius: 10px;
-  }
-  
-  .profile-card {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .profile-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .profile-info h3 {
-    font-size: 16px;
-    color: #333;
-    margin: 10px 0 5px;
-  }
-  
-  .profile-info p {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  .sidebar-menu {
-    list-style: none;
-  }
-  
-  .sidebar-menu li {
-    padding: 10px 0;
-    font-size: 14px;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .sidebar-menu li:hover {
-    color: var(--primary-color);
-  }
-  
-  .main-content {
-    flex: 1;
-  }
-  
-  .info-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .info-form h2 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 20px;
-    align-items: center;
-    text-align: center;
-    font-weight: 700;
-  }
-  
-  .avatar-section {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .avatar-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .avatar-section span {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .form-group input:disabled {
-    background-color: #f9f9f9;
-    color: var(--text-color)
-  }
-  
-  .add-phone-button {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: #fff;
-    color: var(--primary-color);
-    text-align: left;
-    cursor: pointer;
-  }
-  
-  .add-phone-button:hover {
-    border-color: var(--secondary-color);
-  }
-  
-  .save-button {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
-  }
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin-top: 130px;
+}
 
-  
-  .save-button:hover {
-    background-color: var(--secondary-color);
-  }
-  .btn-send-sms {
-    background-color: var(--primary-color);
-  }
-  /* Modal styles */
-  .phone-modal .ant-modal {
-    top: 0 !important; 
-  }
-  
-  .phone-modal .ant-modal-header {
-    background-color: var(--primary-color);
-    color: #fff;
-  }
-  .phone-modal .ant-modal-title {
-    color: #fff;
-    font-size: 16px;
-    align-items: center;
-    text-align: center;
-    padding: 7px 0;
-  }
-  :where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-close {
-    top: 3px;
-  }
-  .phone-modal .ant-modal-content {
-    border-radius: 8px;
-    padding: 0;
-  }
-  :where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-body {
-    font-size: 14px;
-    line-height: 1.5714285714285714;
-    word-wrap: break-word;  
-    padding: 15px;
-    padding-top: 5px;
-  }
-  .phone-input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 15px;
-  }
-  
-  .phone-input-group .ant-select-selector {
-    border-radius: 4px 0 0 4px !important;
-  }
-  
-  .phone-input-group .ant-input {
-    border-radius: 0 4px 4px 0 !important;
-  }
-  
-  .send-sms-button {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    border-radius: 4px;
-    height: 40px;
-  }
-  
-  .send-sms-button:hover {
-    background-color: var(--secondary-color) !important;
-    border-color: var(--secondary-color) !important;
-  }
+.sidebar {
+  width: 270px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 340px;
+  border-radius: 10px;
+}
+
+.profile-card {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+.profile-info p {
+  font-size: 12px;
+  color: #666;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu li {
+  padding: 10px 0;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.sidebar-menu li:hover {
+  color: var(--primary-color);
+}
+
+.main-content {
+  flex: 1;
+}
+
+.info-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-form h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+}
+
+.avatar-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.avatar-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.avatar-section span {
+  font-size: 12px;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group input:disabled {
+  background-color: #f9f9f9;
+  color: var(--text-color)
+}
+
+.add-phone-button {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  color: var(--primary-color);
+  text-align: left;
+  cursor: pointer;
+}
+
+.add-phone-button:hover {
+  border-color: var(--secondary-color);
+}
+
+.save-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+.save-button:hover {
+  background-color: var(--secondary-color);
+}
+.btn-send-sms {
+  background-color: var(--primary-color);
+}
+/* Modal styles */
+.phone-modal .ant-modal {
+  top: 0 !important; 
+}
+
+.phone-modal .ant-modal-header {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.phone-modal .ant-modal-title {
+  color: #fff;
+  font-size: 16px;
+  align-items: center;
+  text-align: center;
+  padding: 7px 0;
+}
+:where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-close {
+  top: 3px;
+}
+.phone-modal .ant-modal-content {
+  border-radius: 8px;
+  padding: 0;
+}
+:where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-body {
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  word-wrap: break-word;  
+  padding: 15px;
+  padding-top: 5px;
+}
+.phone-input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.phone-input-group .ant-select-selector {
+  border-radius: 4px 0 0 4px !important;
+}
+
+.phone-input-group .ant-input {
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.send-sms-button {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.send-sms-button:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+  /* Tùy chỉnh Modal xác nhận đăng xuất */
+.logout-modal .ant-modal-content {
+  border-radius: 8px;
+}
+
+.logout-modal .ant-modal-title {
+  color: var(--primary-color);
+  font-size: 16px;
+  text-align: center;
+}
+
+.logout-modal .ant-modal-body {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}

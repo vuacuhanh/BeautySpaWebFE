@@ -385,7 +385,7 @@ opacity: 0;
 .voucher {
   padding: 90px 0;
   background: var(--background-color);
-  margin-bottom: 10px;
+
 }
 .container-layout {
   width: 1150px;
@@ -932,4 +932,82 @@ border:1px solid #ff545a;
   opacity: 0;
   transform: translateX(100%);
   animation: slideInFromRight 0.5s ease-out forwards;
+}
+/*-------------------------------------
+      Section Header with Topic Icons Navbar
+--------------------------------------*/
+.section-header .header-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.topic-icons-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.topic-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.topic-icon .fa-icon {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.topic-icon:hover {
+  background: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.topic-icon.active {
+  background: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+.topic-icon.active .fa-icon {
+  color: var(--white);
+}
+.title-with-icons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .section-header .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topic-icons-nav {
+    margin-right: 0;
+    margin-bottom: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .topic-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .topic-icon .fa-icon {
+    font-size: 18px;
+  }
+
 }

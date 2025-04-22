@@ -32,7 +32,7 @@ const SignIn = () => {
     setLoading(true);
 
     try {
-      const result = await dispatch(
+      await dispatch(
         login({
           email: formData.email,
           password: formData.password,
@@ -40,9 +40,10 @@ const SignIn = () => {
       ).unwrap();
 
       toast.success('Đăng nhập thành công!');
-      navigate('/dashboard');
+      navigate('/trang-chu');
     } catch (err) {
-      toast.error(err.message || 'Đăng nhập thất bại. Vui lòng kiểm tra lại email hoặc mật khẩu.');
+      const errorMessage = error?.message || err.message || 'Đăng nhập thất bại. Vui lòng kiểm tra lại email hoặc mật khẩu.';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -51,12 +52,9 @@ const SignIn = () => {
   return (
     <div className="signin-container">
       <div className="signin-wrapper">
-        {/* Phần minh họa bên trái */}
         <div className="signin-illustration">
           <img src={illustration} alt="Beauty Spa Illustration" className="illustration-img" />
         </div>
-
-        {/* Phần form bên phải */}
         <div className="signin-form animate-fade-in">
           <h2 className="signin-title">Login</h2>
           <p className="signin-subtitle">Nhập tài khoản của bạn để đăng nhập</p>

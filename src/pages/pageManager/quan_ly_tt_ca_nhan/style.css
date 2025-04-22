@@ -10,7 +10,7 @@
   background-color: #fff;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  height: 340px;
+  height: 390px;
   border-radius: 10px;
 }
 
@@ -42,8 +42,9 @@
 }
 
 .sidebar-menu li {
-  padding: 10px 0;
-  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 0;
+  font-size: 16px;
   color: #333;
   cursor: pointer;
 }
@@ -67,7 +68,7 @@
 
 .info-form h2 {
   font-size: 1.8rem;
-  color: var(--primary-color);
+  color: #333;
   margin-bottom: 20px;
   align-items: center;
   text-align: center;

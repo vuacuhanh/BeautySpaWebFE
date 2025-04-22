@@ -1,0 +1,88 @@
+/* Voucher Manager Container */
+.voucher-manager {
+  padding: 0 20px;
+  margin: auto;
+  min-height: 100vh;
+}
+
+/* Title */
+.voucher-titles {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  background: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Promotion Card */
+.promotion-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.promotion-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Title */
+.promotion-card .ant-card-head {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Promotion Details */
+.promotion-details {
+  margin-bottom: 20px;
+}
+
+.promotion-details .ant-typography {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.promotion-details .ant-typography-strong {
+  margin-right: 8px;
+}
+
+/* Apply Button */
+.apply-button {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 4px;
+  height: 40px;
+}
+
+.apply-button:hover,
+.apply-button:focus {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.apply-button[disabled] {
+  background-color: #d9d9d9;
+  border-color: #d9d9d9;
+  cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .voucher-manager {
+    padding: 10px;
+  }
+
+  .promotion-card {
+    margin-bottom: 10px;
+  }
+
+  .promotion-details .ant-typography {
+    font-size: 12px;
+  }
+
+  .apply-button {
+    height: 36px;
+    font-size: 14px;
+  }
+}

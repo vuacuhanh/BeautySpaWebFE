@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Input, Select } from 'antd';
 import ServiceProviderRegisterManager from '../dang_ky_cua_hang/index.jsx';
 import './style.css';
+import VoucherManager from '../quan_ly_khuyen_mai/index.jsx';
 
 const InformationManagement = () => {
   const [isModalVisible, setIsModalVisible] = useState(false); // Modal cho số điện thoại
@@ -111,7 +112,7 @@ const InformationManagement = () => {
       case 'Hỗ trợ':
         return <div className="info-form"><h2>Hỗ trợ</h2><p>Chưa có nội dung cho mục này.</p></div>;
       case 'Điểm thưởng & Voucher':
-        return <div className="info-form"><h2>Điểm thưởng & Voucher</h2><p>Chưa có nội dung cho mục này.</p></div>;
+        return <VoucherManager/>;
       default:
         return null;
     }

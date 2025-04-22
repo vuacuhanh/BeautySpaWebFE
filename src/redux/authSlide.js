@@ -1,55 +1,76 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { postRequest } from "../services/RequestAPI.js"; // Đường dẫn đến file RequestAPI.js
+import { postRequest } from "../services/RequestAPI.js";
 
-// Thunk để gọi API đăng nhập
-export const login = createAsyncThunk(
-  "auth/login",
-  async ({ email, password }, { rejectWithValue }) => {
-    try {
-      const response = await postRequest("/api/Auth/sign-in", { email, password });
-      return response;
-    } catch (error) {
-      return rejectWithValue(error.response?.data || { message: "Đăng nhập thất bại!" });
-    }
+export const signUp = createAsyncThunk("auth/signUp", async ({ fullName, email, password, roleId }, { rejectWithValue }) => {
+  try {
+    const response = await postRequest("/Auth/sign-up", { fullName, email, password, roleId });
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.response?.data || { message: "Đăng ký thất bại!" });
   }
-);
+});
+
+export const login = createAsyncThunk("auth/login", async ({ email, password }, { rejectWithValue }) => {
+  try {
+    const response = await postRequest("/Auth/sign-in", { email, password });
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.response?.data || { message: "Đăng nhập thất bại!" });
+  }
+});
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
     accessToken: null,
-    refreshToken: null,
-    role: null,
     isLoading: false,
     error: null,
+    isRestoring: true,
   },
   reducers: {
     logout: (state) => {
       state.user = null;
       state.accessToken = null;
-      state.refreshToken = null;
-      state.role = null;
-      localStorage.clear();
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
+    },
+    restoreAuth: (state) => {
+      const accessToken = localStorage.getItem("accessToken");
+      const user = localStorage.getItem("user");
+      if (accessToken && user) {
+        state.accessToken = accessToken;
+        state.user = JSON.parse(user);
+      }
+      state.isRestoring = false; 
     },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(signUp.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(signUp.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(signUp.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        const { accessToken, refreshToken, userLogin } = action.payload.data;
-        state.user = userLogin;
-        state.accessToken = accessToken;
-        state.refreshToken = refreshToken;
-        state.role = userLogin?.roles?.[0] || null;
+        const { data } = action.payload; // data là JWT token
+        state.accessToken = data;
+        state.user = { email: action.meta.arg.email }; // Lưu email từ form
         state.isLoading = false;
 
-        localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        localStorage.setItem("user", JSON.stringify(userLogin));
+        // Lưu token và thông tin người dùng vào localStorage
+        localStorage.setItem("accessToken", data);
+        localStorage.setItem("user", JSON.stringify({ email: action.meta.arg.email }));
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -58,8 +79,9 @@ const authSlice = createSlice({
   },
 });
 
+export const { logout, restoreAuth } = authSlice.actions;
 export const selectCurrentUser = (state) => state.auth.user;
+export const selectAccessToken = (state) => state.auth.accessToken;
 export const selectIsLoading = (state) => state.auth.isLoading;
 export const selectError = (state) => state.auth.error;
-export const { logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,56 +1,117 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// Component SignUp.jsx
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input, Button } from 'antd';
-import { FacebookFilled, GoogleOutlined } from '@ant-design/icons';
-import illustration from '../../../assets/banner/undraw_reading-time_gcvc.svg'; // Đường dẫn đến hình minh họa (thay đổi theo đúng đường dẫn của bạn)
+import { GoogleOutlined, FacebookFilled } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { signUp } from '../../../redux/authSlide.js'; 
+import { toast } from 'react-toastify';
+import illustration from '../../../assets/banner/undraw_reading-time_gcvc.svg';
 import './style.css';
 
 const SignUp = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+    roleId: '32fd2e02-ad83-45aa-bc07-228422362319',
+  });
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const error = useSelector((state) => state.auth.error);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      await dispatch(
+        signUp({
+          fullName: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+          roleId: formData.roleId,
+        })
+      ).unwrap();
+
+      toast.success('Đăng ký thành công! Vui lòng đăng nhập.');
+      navigate('/dang-nhap');
+    } catch (err) {
+      const errorMessage = error?.message || err.message || 'Đăng ký thất bại. Vui lòng thử lại.';
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="signup-container">
       <div className="signup-wrapper">
-        {/* Phần minh họa bên trái */}
         <div className="signup-illustration">
           <img src={illustration} alt="Beauty Spa Illustration" className="illustration-img" />
         </div>
-
-        {/* Phần form bên phải */}
         <div className="signup-form">
           <h2 className="signup-title">Sign Up</h2>
-          <p className="signup-subtitle">Create a new account by entering your details below</p>
+          <p className="signup-subtitle">Tạo tài khoản mới bằng cách nhập thông tin dưới đây</p>
+
+          <div className="form-group">
+            <label htmlFor="fullName" className="form-label">Tên tài khoản</label>
+            <Input
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              placeholder="Nhập tên của bạn (ví dụ: Trần An)"
+              size="large"
+              className="form-input"
+              disabled={loading || isLoading}
+            />
+          </div>
 
           <div className="form-group">
             <label htmlFor="email" className="form-label">Email</label>
             <Input
               id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               placeholder="m@example.com"
               size="large"
               className="form-input"
+              disabled={loading || isLoading}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">Mật khẩu</label>
             <Input.Password
               id="password"
-              placeholder="Enter your password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="Nhập mật khẩu"
               size="large"
               className="form-input"
+              disabled={loading || isLoading}
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="confirm-password" className="form-label">Confirm Password</label>
-            <Input.Password
-              id="confirm-password"
-              placeholder="Confirm your password"
-              size="large"
-              className="form-input"
-            />
-          </div>
-
-          <Button type="primary" block className="signup-btn">
-            Sign Up
+          <Button
+            type="primary"
+            block
+            className="signup-btn"
+            onClick={handleSubmit}
+            loading={loading || isLoading}
+          >
+            Đăng ký
           </Button>
 
           <div className="social-login-buttons">
@@ -63,7 +124,7 @@ const SignUp = () => {
           </div>
 
           <p className="login-link">
-            Already have an account? <Link to="/dang-nhap">Login</Link>
+            Đã có tài khoản? <Link to="/dang-nhap">Đăng nhập</Link>
           </p>
         </div>
       </div>

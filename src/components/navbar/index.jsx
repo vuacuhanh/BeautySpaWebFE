@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Input, Button } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Input, Button, Dropdown, Menu } from 'antd';
+import { SearchOutlined, DownOutlined } from '@ant-design/icons';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/authSlide.js';
 import logo from '../../assets/logo/logo.png';
 import './style.css';
 
 const Navbar = ({ alwaysShowSearch = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  // Mô phỏng trạng thái đăng nhập (thay bằng logic thực tế nếu có)
-  const [user, setUser] = useState(null); // Ví dụ: { name: 'John Doe' } khi đăng nhập
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +26,21 @@ const Navbar = ({ alwaysShowSearch = false }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hàm mô phỏng đăng xuất (thay bằng logic thực tế nếu có)
   const handleLogout = () => {
-    setUser(null);
-    console.log('User logged out');
-    // Trong thực tế, thêm logic gọi API đăng xuất, xóa token, v.v.
+    dispatch(logout());
+    navigate('/dang-nhap');
   };
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="1">
+        <Link to="/thong-tin-ca-nhan">Thông tin cá nhân</Link>
+      </Menu.Item>
+      <Menu.Item key="2" onClick={handleLogout}>
+        Đăng xuất
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <header
@@ -50,7 +62,6 @@ const Navbar = ({ alwaysShowSearch = false }) => {
           </Link>
         </div>
 
-        {/* Thanh tìm kiếm trong Navbar */}
         <div className={`navbar-search ${alwaysShowSearch || isScrolled ? 'visible' : 'hidden'}`}>
           <Input
             placeholder="Tìm kiếm cơ sở làm đẹp, dịch vụ..."
@@ -68,23 +79,16 @@ const Navbar = ({ alwaysShowSearch = false }) => {
           </Button>
         </div>
 
-        {/* Hiển thị tùy theo trạng thái đăng nhập */}
         <div className="auth-links">
           {user ? (
-            <div className="user-info">
-              <span
-                className={`user-name ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
-              >
-                Xin chào, {user.name}
-              </span>
+            <Dropdown overlay={menu} trigger={['click']}>
               <a
-                href="#"
-                onClick={handleLogout}
-                className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
+                className={`auth-link user-dropdown ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
+                onClick={(e) => e.preventDefault()}
               >
-                Đăng xuất
+                {user.email || 'User'} <DownOutlined style={{ fontSize: '12px', marginLeft: '4px' }} />
               </a>
-            </div>
+            </Dropdown>
           ) : (
             <>
               <a

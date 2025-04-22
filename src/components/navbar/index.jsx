@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Button, Dropdown, Menu } from 'antd';
+import { Input, Button, Dropdown, Menu, Spin } from 'antd';
 import { SearchOutlined, DownOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../redux/authSlide.js';
+import { logout, selectCurrentUser, selectIsRestoring } from '../../redux/authSlide';
 import logo from '../../assets/logo/logo.png';
 import './style.css';
 
@@ -11,7 +11,8 @@ const Navbar = ({ alwaysShowSearch = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector(selectCurrentUser);
+  const isRestoring = useSelector(selectIsRestoring);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +42,17 @@ const Navbar = ({ alwaysShowSearch = false }) => {
       </Menu.Item>
     </Menu>
   );
+
+  // Hiển thị loading khi đang khôi phục trạng thái
+  if (isRestoring) {
+    return (
+      <header className="header-top">
+        <div className="navbar-container">
+          <Spin size="large" />
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header
@@ -91,18 +103,18 @@ const Navbar = ({ alwaysShowSearch = false }) => {
             </Dropdown>
           ) : (
             <>
-              <a
-                href="/dang-nhap"
+              <Link
+                to="/dang-nhap"
                 className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
               >
                 Đăng nhập
-              </a>
-              <a
-                href="/dang-ky"
+              </Link>
+              <Link
+                to="/dang-ky"
                 className={`auth-link ${alwaysShowSearch || isScrolled ? 'scrolled' : ''}`}
               >
                 Đăng ký
-              </a>
+              </Link>
             </>
           )}
         </div>

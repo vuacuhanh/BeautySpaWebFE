@@ -19,15 +19,17 @@ export const login = createAsyncThunk("auth/login", async ({ email, password }, 
   }
 });
 
+const initialState = {
+  user: null,
+  accessToken: null,
+  isLoading: false,
+  error: null,
+  isRestoring: true, // Thêm trạng thái đang khôi phục
+};
+
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    user: null,
-    accessToken: null,
-    isLoading: false,
-    error: null,
-    isRestoring: true,
-  },
+  initialState,
   reducers: {
     logout: (state) => {
       state.user = null;
@@ -38,11 +40,12 @@ const authSlice = createSlice({
     restoreAuth: (state) => {
       const accessToken = localStorage.getItem("accessToken");
       const user = localStorage.getItem("user");
+      
       if (accessToken && user) {
         state.accessToken = accessToken;
         state.user = JSON.parse(user);
       }
-      state.isRestoring = false; 
+      state.isRestoring = false; // Đánh dấu đã hoàn thành khôi phục
     },
   },
   extraReducers: (builder) => {
@@ -84,4 +87,6 @@ export const selectCurrentUser = (state) => state.auth.user;
 export const selectAccessToken = (state) => state.auth.accessToken;
 export const selectIsLoading = (state) => state.auth.isLoading;
 export const selectError = (state) => state.auth.error;
+export const selectIsRestoring = (state) => state.auth.isRestoring; // Selector mới
+
 export default authSlice.reducer;

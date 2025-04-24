@@ -1,68 +1,101 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Input, Select } from 'antd';
 import ServiceProviderRegisterManager from '../dang_ky_cua_hang/index.jsx';
+import emptyBookingsImage from '../../../assets/banner/undraw_order-flowers_vauv.svg';
 import './style.css';
-import VoucherManager from '../quan_ly_khuyen_mai/index.jsx';
 
 const InformationManagement = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false); // Modal cho số điện thoại
-  const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false); // Modal xác nhận đăng xuất
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phonePrefix, setPhonePrefix] = useState('+84');
-  const [selectedMenu, setSelectedMenu] = useState('Thông tin tài khoản'); // State to track selected menu
+  const [selectedMenu, setSelectedMenu] = useState('Thông tin tài khoản');
+  const navigate = useNavigate();
 
   // Menu items
-  const menuItems = [
+  const menuItem1 = [
     'Thông tin tài khoản',
     'Đăng ký dịch vụ',
     'Hỗ trợ',
     'Điểm thưởng & Voucher',
-    'Đăng xuất',
+  ];
+  const menuItem2 = [
+    'Lịch sử hoạt động',
+    'Quản lý đặt chỗ',
+    'Thông tin liên hệ',
+    'Mời bạn bè',
+  ];
+  const menuItem3 = [
+    'Xóa Tài Khoản',
+    'Đăng xuất'
   ];
 
-  // Show modal for adding phone number
+  // Dummy voucher data
+  const vouchers = [
+    {
+      id: 1,
+      serviceName: 'Massage thư giãn toàn thân',
+      storeName: 'Hà Spa',
+      distance: '2.5 km',
+      discountedPrice: '150,000 VNĐ',
+      originalPrice: '200,000 VNĐ',
+      image: 'https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg',
+    },
+    {
+      id: 2,
+      serviceName: 'Gội đầu dưỡng sinh',
+      storeName: 'Spa Thư Giãn',
+      distance: '1.8 km',
+      discountedPrice: '100,000 VNĐ',
+      originalPrice: '150,000 VNĐ',
+      image: 'https://images.pexels.com/photos/3993317/pexels-photo-3993317.jpeg',
+    },
+  ];
+
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  // Close modal for phone number
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
-  // Handle SMS sending (mock)
   const handleSendSMS = () => {
     console.log(`Gửi SMS đến số: ${phonePrefix}${phoneNumber}`);
     setIsModalVisible(false);
   };
 
-  // Show logout confirmation modal
   const showLogoutModal = () => {
     setIsLogoutModalVisible(true);
   };
 
-  // Close logout confirmation modal
   const handleLogoutCancel = () => {
     setIsLogoutModalVisible(false);
   };
 
-  // Handle logout confirmation
   const handleLogoutConfirm = () => {
     console.log('Người dùng đã đăng xuất');
     setIsLogoutModalVisible(false);
-    // Thêm logic đăng xuất thực tế tại đây (ví dụ: gọi API, xóa token, chuyển hướng trang)
   };
 
-  // Handle menu item click
   const handleMenuClick = (item) => {
     if (item === 'Đăng xuất') {
-      showLogoutModal(); // Hiển thị popup xác nhận khi bấm Đăng xuất
+      showLogoutModal();
     } else {
       setSelectedMenu(item);
     }
   };
 
-  // Render main content based on selected menu
+  const handleBookNow = () => {
+    navigate('/co-so-lam-dep');
+  };
+
+  const handleApplyVoucher = (voucherId) => {
+    console.log(`Áp dụng voucher ID: ${voucherId}`);
+    // Thêm logic để áp dụng voucher (e.g., gửi API, cập nhật trạng thái)
+  };
+
   const renderMainContent = () => {
     switch (selectedMenu) {
       case 'Thông tin tài khoản':
@@ -112,7 +145,73 @@ const InformationManagement = () => {
       case 'Hỗ trợ':
         return <div className="info-form"><h2>Hỗ trợ</h2><p>Chưa có nội dung cho mục này.</p></div>;
       case 'Điểm thưởng & Voucher':
-        return <VoucherManager/>;
+        return (
+          <div className="info-form voucher-list">
+            <h2>Điểm thưởng & Voucher</h2>
+            <div className="vouchers">
+              {vouchers.map((voucher) => (
+                <div key={voucher.id} className="voucher-item">
+                  <div className="voucher-image">
+                    <img
+                      src={voucher.image}
+                      alt={voucher.storeName}
+                      className="voucher-store-image"
+                    />
+                  </div>
+                  <div className="voucher-details">
+                    <h3 className="voucher-service-name">{voucher.serviceName}</h3>
+                    <p className="voucher-store-name">{voucher.storeName}</p>
+                    <p className="voucher-distance">{voucher.distance}</p>
+                    <div className="voucher-pricing">
+                      <span className="voucher-discounted-price">{voucher.discountedPrice}</span>
+                      <span className="voucher-original-price">{voucher.originalPrice}</span>
+                    </div>
+                    <button
+                      className="voucher-apply-button"
+                      onClick={() => handleApplyVoucher(voucher.id)}
+                    >
+                      Áp dụng
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      case 'Quản lý đặt chỗ':
+        return (
+          <div className="info-form empty-bookings">
+            <h2>Quản lý đặt chỗ</h2>
+            <div className="empty-state">
+              <img
+                src={emptyBookingsImage}
+                alt="No bookings"
+                className="empty-bookings-image"
+              />
+              <p>Chưa có lịch đặt chỗ nào. Hãy đặt lịch ngay!</p>
+              <button className="book-now-button" onClick={handleBookNow}>
+                Đặt lịch ngay
+              </button>
+            </div>
+          </div>
+        );
+      case 'Thông tin liên hệ':
+        return (
+          <div className="info-form contact-info">
+            <h2>Thông tin liên hệ</h2>
+            <div className="contact-details">
+              <p><strong>Công ty:</strong> Công ty cổ phần BeautySpa</p>
+              <p><strong>Địa chỉ:</strong> TP.HCM</p>
+              <p><strong>Số giấy phép:</strong> abc</p>
+              <p><strong>Email:</strong> AnNgu123@gmail.com</p>
+              <p><strong>Phone:</strong> 1234565677</p>
+            </div>
+          </div>
+        );
+      case 'Lịch sử hoạt động':
+      case 'Mời bạn bè':
+      case 'Xóa Tài Khoản':
+        return <div className="info-form"><h2>{selectedMenu}</h2><p>Chưa có nội dung cho mục này.</p></div>;
       default:
         return null;
     }
@@ -120,7 +219,6 @@ const InformationManagement = () => {
 
   return (
     <div className="information-management">
-      {/* Sidebar */}
       <aside className="sidebar">
         <div className="profile-card">
           <img
@@ -133,23 +231,47 @@ const InformationManagement = () => {
             <p>{selectedMenu}</p>
           </div>
         </div>
-        <ul className="sidebar-menu">
-          {menuItems.map((item) => (
-            <li
-              key={item}
-              className={selectedMenu === item ? 'active' : ''}
-              onClick={() => handleMenuClick(item)}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+        <div className="menu-section">
+          <ul className="sidebar-menu">
+            {menuItem1.map((item) => (
+              <li
+                key={item}
+                className={selectedMenu === item ? 'active' : ''}
+                onClick={() => handleMenuClick(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="menu-section">
+          <ul className="sidebar-menu">
+            {menuItem2.map((item) => (
+              <li
+                key={item}
+                className={selectedMenu === item ? 'active' : ''}
+                onClick={() => handleMenuClick(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="menu-section">
+          <ul className="sidebar-menu">
+            {menuItem3.map((item) => (
+              <li
+                key={item}
+                className={selectedMenu === item ? 'active' : ''}
+                onClick={() => handleMenuClick(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </aside>
-
-      {/* Main Content */}
       <main className="main-content">{renderMainContent()}</main>
-
-      {/* Modal để nhập số điện thoại */}
       <Modal
         title="Đăng nhập bằng số điện thoại"
         visible={isModalVisible}
@@ -187,8 +309,6 @@ const InformationManagement = () => {
           Gửi SMS
         </Button>
       </Modal>
-
-      {/* Modal xác nhận đăng xuất */}
       <Modal
         title="Xác nhận đăng xuất"
         visible={isLogoutModalVisible}

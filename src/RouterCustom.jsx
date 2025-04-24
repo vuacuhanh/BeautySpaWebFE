@@ -9,6 +9,8 @@ import InformationManagement from './pages/pageManager/quan_ly_tt_ca_nhan/index.
 import SignUp from './pages/login/SignUp/index.jsx';
 import SigIn from './pages/login/SignIn/index.jsx';
 import ServiceProviderRegisterManager from './pages/pageManager/dang_ky_cua_hang/index.jsx';
+import AppointmentManagement from './pages/pageManager/quan_ly_dat_lich/index.jsx';
+import ConfirmAppointment from './pages/pageManager/quan_ly_dat_lich/confirmApp.jsx';
 
 export const userRouters = [
   {
@@ -46,7 +48,18 @@ export const userRouters = [
     path: ROUTERS.USER.serviceProvider,
     component: <ServiceProviderRegisterManager />,
     layout: HomePageLayout,
+  },
+  {
+    path: ROUTERS.USER.appointment,
+    component:<AppointmentManagement/>,
+    layout: HomePageLayout,
+  },
+  {
+    path: ROUTERS.USER.confirmAppointment,
+    component:<ConfirmAppointment/>,
+    layout: HomePageLayout,
   }
+
 ];
 
 const RouterCustom = () => (

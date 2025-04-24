@@ -10,7 +10,7 @@
   background-color: #fff;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  height: 390px;
+  height: 700px;
   border-radius: 10px;
 }
 
@@ -37,8 +37,18 @@
   color: #666;
 }
 
+.menu-section {
+  margin-bottom: 20px;
+}
+
+.menu-section:not(:last-child) {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
 .sidebar-menu {
   list-style: none;
+  padding: 0;
 }
 
 .sidebar-menu li {
@@ -47,10 +57,16 @@
   font-size: 16px;
   color: #333;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .sidebar-menu li:hover {
   color: var(--primary-color);
+}
+
+.sidebar-menu li.active {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 .main-content {
@@ -58,21 +74,175 @@
 }
 
 .info-form {
-  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 0 auto;
 }
 
 .info-form h2 {
   font-size: 1.8rem;
-  color: #333;
+  color: var(--primary-color);
   margin-bottom: 20px;
-  align-items: center;
   text-align: center;
   font-weight: 700;
+}
+
+.empty-bookings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-state {
+  margin-top: 20px;
+}
+
+.empty-bookings-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.book-now-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book-now-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-details {
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.contact-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.contact-details strong {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.voucher-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vouchers {
+  width: 100%;
+  max-width: 600px;
+}
+
+.voucher-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.voucher-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.voucher-image {
+  flex: 0 0 120px;
+  margin-right: 15px;
+}
+
+.voucher-store-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.voucher-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.voucher-service-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.voucher-store-name {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 5px 0;
+}
+
+.voucher-distance {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.voucher-pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.voucher-discounted-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.voucher-original-price {
+  font-size: 14px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.voucher-apply-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: all 0.3s ease;
+}
+
+.voucher-apply-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
 .avatar-section {
@@ -86,11 +256,6 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
-}
-
-.avatar-section span {
-  font-size: 12px;
-  color: #666;
 }
 
 .form-group {
@@ -115,7 +280,7 @@
 
 .form-group input:disabled {
   background-color: #f9f9f9;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 .add-phone-button {
@@ -146,43 +311,43 @@
   margin-top: 20px;
 }
 
-
 .save-button:hover {
   background-color: var(--secondary-color);
 }
-.btn-send-sms {
-  background-color: var(--primary-color);
-}
-/* Modal styles */
+
 .phone-modal .ant-modal {
-  top: 0 !important; 
+  top: 0 !important;
 }
 
 .phone-modal .ant-modal-header {
   background-color: var(--primary-color);
   color: #fff;
 }
+
 .phone-modal .ant-modal-title {
   color: #fff;
   font-size: 16px;
-  align-items: center;
   text-align: center;
   padding: 7px 0;
 }
+
 :where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-close {
   top: 3px;
 }
+
 .phone-modal .ant-modal-content {
   border-radius: 8px;
   padding: 0;
 }
+
 :where(.css-dev-only-do-not-override-1a3rktk).ant-modal .ant-modal-body {
   font-size: 14px;
   line-height: 1.5714285714285714;
-  word-wrap: break-word;  
+  word-wrap: break-word;
   padding: 15px;
   padding-top: 5px;
 }
+
 .phone-input-group {
   display: flex;
   align-items: center;
@@ -209,7 +374,7 @@
   background-color: var(--secondary-color) !important;
   border-color: var(--secondary-color) !important;
 }
-  /* Tùy chỉnh Modal xác nhận đăng xuất */
+
 .logout-modal .ant-modal-content {
   border-radius: 8px;
 }
@@ -225,4 +390,7 @@
   text-align: center;
   font-size: 14px;
   color: #666;
+}
+.contact-details p {
+  margin-top: 15px;
 }

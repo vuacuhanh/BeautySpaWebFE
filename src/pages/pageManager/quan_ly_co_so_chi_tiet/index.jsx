@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate  } from 'react-router-dom';
 import { HeartOutlined, ShareAltOutlined, CommentOutlined, EnvironmentOutlined, ClockCircleOutlined, PhoneOutlined, PictureFilled, ShoppingOutlined, MessageOutlined, CompassFilled, ShopOutlined } from '@ant-design/icons';
 import './style.css';
 import FacilityCard from '../../../components/FacilityCard/index.jsx';
+import QuanlityService from '../../../components/quanlity/index.jsx';
 const FacilityDetailManagement = () => {
   const { id } = useParams();
   
@@ -11,7 +12,7 @@ const FacilityDetailManagement = () => {
   const servicesRef = useRef(null);
   const commentsRef = useRef(null);
   const locationRef = useRef(null);
-
+  const navigate = useNavigate();
   // Hàm scroll đến section tương ứng
   const scrollToSection = (ref) => {
     window.scrollTo({
@@ -19,6 +20,7 @@ const FacilityDetailManagement = () => {
       behavior: 'smooth'
     });
   };
+
   // Dummy data cho các cơ sở tương tự
   const similarFacilities = [
     {
@@ -50,6 +52,7 @@ const FacilityDetailManagement = () => {
       address: '789 Nguyễn Huệ, Quận 1, TP.HCM'
     },
   ];
+
   // Dummy data
   const facilityData = {
     id: id,
@@ -81,12 +84,60 @@ const FacilityDetailManagement = () => {
   ]);
   const [newComment, setNewComment] = useState('');
 
+  // State để lưu số lượng của từng dịch vụ
+  const [serviceQuantities, setServiceQuantities] = useState(
+    facilityData.services.map(() => 0)
+  );
+
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     if (newComment.trim()) {
       setComments([...comments, { user: 'Khách hàng mới', content: newComment }]);
       setNewComment('');
     }
+  };
+
+  // Xử lý sự kiện đặt lịch
+  const handleBooking = () => {
+    scrollToSection(servicesRef);
+  };
+
+  // Xử lý tăng/giảm số lượng dịch vụ
+  const handleQuantityChange = (index, change) => {
+    setServiceQuantities((prev) =>
+      prev.map((qty, i) => (i === index ? Math.max(0, qty + change) : qty))
+    );
+  };
+
+  // Xử lý xác nhận dịch vụ
+  const handleConfirmServices = () => {
+    // Lọc ra các dịch vụ đã chọn (quantity > 0)
+    const selectedServices = facilityData.services
+      .map((service, index) => ({
+        name: service.name,
+        quantity: serviceQuantities[index],
+        price: service.price,
+      }))
+      .filter((service) => service.quantity > 0);
+  
+    // Kiểm tra nếu không có dịch vụ nào được chọn
+    if (selectedServices.length === 0) {
+      alert('Vui lòng chọn ít nhất một dịch vụ');
+      return;
+    }
+  
+    // Chuyển hướng sang trang đặt lịch và truyền dữ liệu dịch vụ đã chọn
+    navigate('/dat-lich', {
+      state: {
+        selectedServices,
+        facilityInfo: {
+          id: facilityData.id,
+          name: facilityData.title,
+          address: facilityData.address,
+          phone: facilityData.phone
+        }
+      }
+    });
   };
 
   return (
@@ -115,8 +166,12 @@ const FacilityDetailManagement = () => {
           <p className="info-item">
             <PhoneOutlined /> {facilityData.phone}
           </p>
-          
-          <div className="facilityDetail-actions ">
+          <div className='facilityDetail-book-action'>
+            <button className="book-button" onClick={handleBooking}>
+              Đặt lịch
+            </button>
+          </div>
+          <div className="facilityDetail-actions">
             <span className="action-icon">
               <HeartOutlined /> {facilityData.likes} Thích
             </span>
@@ -130,20 +185,10 @@ const FacilityDetailManagement = () => {
         </div>
       </div>
 
-      {/* Navigation Bar */}
-      <nav className="facility-navbar">
-        <ul>
-          <li onClick={() => scrollToSection(imagesRef)}>Hình ảnh</li>
-          <li onClick={() => scrollToSection(servicesRef)}>Dịch vụ</li>
-          <li onClick={() => scrollToSection(commentsRef)}>Bình luận ({comments.length})</li>
-          <li onClick={() => scrollToSection(locationRef)}>Vị trí</li>
-        </ul>
-      </nav>
-
       {/* Section Hình ảnh */}
       <section className="facility-section facility-images" ref={imagesRef}>
         <h2>
-          <PictureFilled className="section-icon" />Hình ảnh
+          <PictureFilled className="section-icon" /> Hình ảnh
         </h2>
         <div className="image-gallery">
           {facilityData.images.map((img, index) => (
@@ -160,13 +205,37 @@ const FacilityDetailManagement = () => {
       {/* Section Dịch vụ */}
       <section className="facility-section facility-services" ref={servicesRef}>
         <h2> <ShoppingOutlined className="section-icon" /> Dịch vụ</h2>
-        <div className="services-list">
-          {facilityData.services.map((service, index) => (
-            <div key={index} className="service-item">
-              <span className="service-name">{service.name}</span>
-              <span className="service-price">{service.price}</span>
-            </div>
-          ))}
+        <div className="services-list-container">
+          <table className="services-table">
+            <thead>
+              <tr>
+                <th>Tên dịch vụ</th>
+                <th className='ser-item'>Giá</th>
+                <th className='ser-item'>Số lượng</th>
+              </tr>
+            </thead>
+            <tbody>
+              {facilityData.services.map((service, index) => (
+                <tr key={index} className="service-row">
+                  <td className="service-name">{service.name}</td>
+                  <td className="service-price">{service.price}</td>
+                  <td className="service-quantity">
+                    <QuanlityService
+                      initialValue={serviceQuantities[index]}
+                      min={0}
+                      max={10}
+                      onQuantityChange={(newValue) => handleQuantityChange(index, newValue)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="confirm-button-container">
+            <button className="confirm-services-button" onClick={handleConfirmServices}>
+              Tiếp tục
+            </button>
+          </div>
         </div>
       </section>
 
@@ -193,7 +262,7 @@ const FacilityDetailManagement = () => {
 
       {/* Section Vị trí */}
       <section className="facility-section facility-map" ref={locationRef}>
-        <h2>  <CompassFilled className="section-icon" /> Vị trí</h2>
+        <h2> <CompassFilled className="section-icon" /> Vị trí</h2>
         <div className="map-container">
           <iframe
             src={facilityData.mapEmbedUrl}
@@ -206,6 +275,7 @@ const FacilityDetailManagement = () => {
           ></iframe>
         </div>
       </section>
+
       {/* Section Cơ sở tương tự */}
       <section className="facility-section similar-facilities">
         <h2><ShopOutlined className="section-icon" /> Cơ sở tương tự</h2>

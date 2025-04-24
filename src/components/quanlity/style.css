@@ -1,0 +1,63 @@
+.quantity-service {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .quantity-btn:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .quantity-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .quantity-btn.increase {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .quantity-btn.decrease {
+    color: #ff4d4f;
+    border-color: #ff4d4f;
+  }
+  
+  .quantity-input {
+    width: 40px;
+    height: 32px;
+    margin: 0 8px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .quantity-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+  
+  .quantity-input::-webkit-outer-spin-button,
+  .quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .quantity-input[type=number] {
+    -moz-appearance: textfield;
+  }

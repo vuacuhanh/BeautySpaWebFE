@@ -13,7 +13,7 @@
   border-radius: 8px;
   margin-bottom: 20px;
   overflow: hidden;
-  height: 400px;
+  height: 450px;
   box-shadow: 0 4px 12px var(--shadow-color);
 }
 
@@ -57,7 +57,6 @@
 .info-item {
   margin: 8px 0;
   font-size: 16px;
-  display: flex;
   align-items: center;
 }
 
@@ -71,7 +70,7 @@
   border-top: 2px solid var(--primary-color);
   display: flex;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 8px;
   justify-content: space-evenly;
 }
 
@@ -186,37 +185,83 @@
   box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-/* Section Dịch vụ */
-.services-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* Section Dịch vụ ========================================================*/
+.services-list-container {
+  margin-top: 20px;
 }
 
-.service-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 18px;
-  background-color: var(--background-color);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  align-items: center;
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed;
 }
 
-.service-item:hover {
-  background-color: var(--accent-color);
-  transform: translateX(5px);
+.services-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.services-table th {
+  background-color: #fafafa;
+  font-weight: 500;
+  padding: 12px 10px;
+  text-align: left;
+}
+/* Căn chỉnh cột Giá và Số lượng */
+.services-table th:nth-child(2),
+.services-table td:nth-child(2) {
+  width: 330px;
+  text-align: center; 
+  padding-right: 30px;
+}
+
+.services-table th:nth-child(3),
+.services-table td:nth-child(3) {
+  text-align: center; 
+  width: 150px; 
+}
+
+.service-row:hover {
+  background-color: #f9f9f9;
 }
 
 .service-name {
   font-weight: 600;
   font-size: 16px;
+  width: 50%;
 }
 
 .service-price {
   color: var(--secondary-color);
   font-weight: 600;
   font-size: 16px;
+  text-align: right;
+}
+.service-quantity {
+  text-align: center; 
+}
+
+.confirm-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.confirm-services-button {
+  padding: 10px 24px;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-services-button:hover {
+  background-color: #40a9ff;
 }
 
 /* Section Bình luận */
@@ -232,10 +277,6 @@
   background-color: var(--background-color);
   border-radius: 8px;
   transition: all 0.3s ease;
-}
-
-.comment-item:hover {
-  background-color: var(--accent-color);
 }
 
 .comment-item p {
@@ -477,4 +518,38 @@
     font-size: 20px;
     margin-right: 8px;
   }
+}
+.facilityDetail-book-action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+  margin: 8px 0;
+}
+
+.facilityDetail-book-action .rating-badge {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.book-button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 60px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.book-button:hover {
+  background-color: var(--secondary-color);
 }
